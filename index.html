@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juuso Jyväkorpi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: plain, factual, a professional's own page; numbers and names over adjectives
+   IDEA: a project shipment, work shown as cargo that was planned, bought and delivered
+   PICTURE: a cargo ship in the first screen, its containers carrying the four core skills
+   COLOUR and TYPE: harbour blue field, white, one safety-orange accent; Archivo + Source Sans 3
+   LAYOUT: blue hero band with ship, then cases, side projects, career timeline, contact */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0e1620);--soft:light-dark(#f2f5f8,#152130);--ink:light-dark(#14202b,#e8eef4);
+--mute:light-dark(#4f5f6e,#a8b6c4);--line:light-dark(#d9e1e8,#263546);
+--sea:#123c69;--sea2:#1d5591;--acc:#e2572b;--onsea:#ffffff}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Archivo,system-ui,sans-serif;line-height:1.08;text-wrap:balance;margin:0}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(36px,5vw,72px) max(5vw,18px)}
+nav{background:var(--sea);color:var(--onsea);padding:14px max(5vw,18px)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+nav b{font-family:Archivo;font-weight:800;margin-right:auto}
+nav a{text-decoration:none;opacity:.85;font-size:15px;padding:8px 0}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline}
+.hero{background:var(--sea);color:var(--onsea);padding-top:clamp(20px,3vw,40px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(36px,5vw,52px);font-weight:800}
+.hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34em;opacity:.92;margin:18px 0 26px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin:0;padding:0;list-style:none}
+.facts li{font-size:15px;opacity:.9}.facts strong{display:block;font-family:Archivo;font-size:26px;color:#fff}
+.ship{width:100%;height:auto;display:block}
+h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:10px}
+.sub{color:var(--mute);max-width:44em;margin:0 0 30px}
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:22px}
+.case{background:var(--soft);border-radius:10px;padding:24px 24px 20px;display:flex;flex-direction:column}
+.case .who{font-size:14px;color:var(--mute);margin-bottom:6px}
+.case h3{font-size:22px;margin-bottom:10px}
+.case p{margin:0 0 12px}
+.case .num{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px}
+.case .num b{color:var(--acc);font-family:Archivo;font-size:20px;margin-right:6px}
+.side{background:var(--soft)}
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:22px}
+.proj article{background:var(--bg);border-radius:10px;padding:24px;border:1px solid var(--line)}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--acc) 16%,transparent);color:light-dark(#a33a16,#ff9b74);margin-bottom:10px}
+.proj h3{font-size:22px;margin-bottom:8px}.proj p{margin:0 0 10px}
+.proj .why{color:var(--mute);font-size:16px}
+.time{list-style:none;margin:0;padding:0;border-left:3px solid var(--sea2);margin-left:6px}
+.time li{position:relative;padding:0 0 26px 26px}
+.time li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--sea2)}
+.time .yr{font-size:15px;color:var(--mute);white-space:nowrap}
+.time h3{font-size:20px;margin:2px 0 4px}.time p{margin:0;max-width:52em}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.edu{list-style:none;margin:0;padding:0}.edu li{padding:12px 0;border-bottom:1px solid var(--line)}
+.edu span{display:block;color:var(--mute);font-size:15px}
+.contact{background:var(--sea);color:var(--onsea)}
+.contact .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between}
+.contact p{margin:6px 0 0;opacity:.9}
+.mail{font-family:Archivo;font-size:clamp(18px,2.4vw,24px);font-weight:700;color:#fff;overflow-wrap:anywhere}
+.btn{font:600 16px "Source Sans 3",sans-serif;min-height:44px;padding:10px 18px;border-radius:8px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+footer{padding:18px max(5vw,18px);font-size:14px;color:var(--mute)}
+@media(max-width:820px){.hero .wrap,.two{grid-template-columns:minmax(0,1fr)}.hero .art{order:2}}
+@media(prefers-reduced-motion:no-preference){.ship .hull{animation:bob 6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(4px)}}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Juuso Jyväkorpi</b><a href="#work">Work</a><a href="#projects">Own projects</a><a href="#career">Career</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero band">
+  <div class="wrap">
+    <div>
+      <h1>Procurement and supply chain for industrial projects</h1>
+      <p class="lead">I have worked for over eleven years in export industry: buying freight and services for delivery projects, running supplier networks and keeping quality systems in order. I live in Helsinki.</p>
+      <ul class="facts">
+        <li><strong>11+ years</strong>in export industry</li>
+        <li><strong>€1M+</strong>largest single purchase</li>
+        <li><strong>9 years</strong>at TM System Finland</li>
+      </ul>
+    </div>
+    <div class="art">
+      <svg class="ship" viewBox="0 0 560 340" role="img" aria-label="Cargo ship carrying containers marked Requests for quotation, Supplier network, ISO 9001 and ERP project">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d5591"/><stop offset="1" stop-color="#123c69"/></linearGradient>
+          <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a48"/><stop offset="1" stop-color="#18222c"/></linearGradient>
+        </defs>
+        <rect width="560" height="340" rx="14" fill="url(#sky)"/>
+        <circle cx="470" cy="70" r="34" fill="#ffd9c7" opacity=".9"/>
+        <g opacity=".25" fill="none" stroke="#fff" stroke-width="2"><path d="M20 120 h80 M60 140 h70 M400 150 h90"/></g>
+        <g class="hull">
+          <g font-family="Archivo, sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+            <rect x="70" y="148" width="190" height="52" rx="3" fill="#e2572b"/><rect x="70" y="148" width="190" height="6" fill="#ff8a5e"/>
+            <text x="165" y="180" fill="#fff">Requests for quotation</text>
+            <rect x="268" y="148" width="190" height="52" rx="3" fill="#f2f5f8"/><rect x="268" y="148" width="190" height="6" fill="#fff"/>
+            <text x="363" y="180" fill="#123c69">Supplier network</text>
+            <rect x="110" y="90" width="150" height="52" rx="3" fill="#f2f5f8"/><rect x="110" y="90" width="150" height="6" fill="#fff"/>
+            <text x="185" y="122" fill="#123c69">ISO 9001</text>
+            <rect x="268" y="90" width="150" height="52" rx="3" fill="#3f7cc0"/><rect x="268" y="90" width="150" height="6" fill="#6aa0dc"/>
+            <text x="343" y="122" fill="#fff">ERP project</text>
+          </g>
+          <rect x="462" y="104" width="44" height="96" rx="3" fill="#f2f5f8"/><rect x="470" y="114" width="28" height="12" fill="#123c69"/>
+          <path d="M40 206 H530 L500 262 H76 Z" fill="url(#hull)"/>
+          <path d="M40 206 H530 L524 218 H46 Z" fill="#e2572b"/>
+        </g>
+        <path d="M0 266 Q70 254 140 266 T280 266 T420 266 T560 266 V340 H0 Z" fill="#0d2d50"/>
+        <path d="M0 290 Q70 280 140 290 T280 290 T420 290 T560 290" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <h2>Work I have done</h2>
+    <p class="sub">Five pieces of work from my career, with what was done and what it led to.</p>
+    <div class="cases">
+      <article class="case"><div class="who">Andritz Oy, 2023–2024</div><h3>Freight purchasing for pulp and paper delivery projects</h3>
+        <p>I bought freight for project deliveries by sea, road and air, including oversized and breakbulk cargo. I ran the requests for quotation, compared the offers and negotiated prices and contract terms. I also tendered annual warehousing service agreements.</p>
+        <div class="num"><b>€1M+</b>largest single freight purchase</div></article>
+      <article class="case"><div class="who">TM System Finland</div><h3>ISO 9001 renewed to the 2015 standard</h3>
+        <p>I renewed the existing quality management system to the 2015 standard and was responsible for internal and external audits for several years. I handled deviations and claims from root cause to verified corrective action.</p>
+        <div class="num"><b>2009 → 2015</b>standard version updated</div></article>
+      <article class="case"><div class="who">TM System Finland</div><h3>ERP project led to completion</h3>
+        <p>I led the company's ERP project. It taught me how much poor purchasing and item data costs later in the chain, and why the data has to be right from the start.</p>
+        <div class="num"><b>Led</b>the implementation from start to finish</div></article>
+      <article class="case"><div class="who">TM System Finland</div><h3>Packing instructions for every product</h3>
+        <p>I wrote product-specific packing instructions covering packing method, materials, protection and markings. Packing quality became the same every time, and new staff could learn it from the instructions.</p>
+        <div class="num"><b>Fewer</b>transport damages, auditable packing</div></article>
+      <article class="case"><div class="who">TM System Finland and Andritz Oy</div><h3>Transport capacity planned months ahead</h3>
+        <p>Together with sales I planned the transport capacity that upcoming projects would need, and what it would cost: containers, ship space, breakbulk, special equipment and warehouse.</p>
+        <div class="num"><b>Hundreds</b>of containers in a single project</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="band side" id="projects">
+  <div class="wrap">
+    <h2>Own projects</h2>
+    <p class="sub">Work I have done outside my job: one project in progress and my Master's thesis.</p>
+    <div class="proj">
+      <article><span class="tag">In progress</span><h3>Housing prices in Finland on a map</h3>
+        <p>A web page that shows Finnish housing prices by postcode area and compares cities, built on open data from Statistics Finland.</p>
+        <p class="why">Why it matters for my work: it is practice in taking raw public data, cleaning it and turning it into something a person can read at a glance.</p></article>
+      <article><span class="tag">Master's thesis, 2021</span><h3>Project organization change control in a small to medium-sized enterprise</h3>
+        <p>My Master's thesis in project management at Turku University of Applied Sciences. I studied how internal and external changes affect customer delivery projects in an international small to medium-sized company.</p>
+        <p>The work was action research in three stages: a workshop that identified the changes that affect the whole project, a survey, and interviews that also collected ideas for improvement.</p>
+        <p><strong>Result:</strong> a change management table for the project staff, a tool for spotting and understanding changes early. The main lessons were to record project reflections and use them before the next project starts, and to keep communication with stakeholders open and continuous.</p>
+        <p class="why">Why it matters for my work: in delivery projects a change in scope or schedule reaches purchasing and logistics fast. Seeing it early saves time and money.</p>
+        <p><a href="https://www.theseus.fi/items/bb59f002-bfe1-49d3-9fd5-d6a42350eec4">Read the thesis on Theseus</a> (in Finnish)</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="career">
+  <div class="wrap two">
+    <div>
+      <h2>Career</h2>
+      <ol class="time">
+        <li><span class="yr">2025 – present</span><h3>Project Specialist, DSV Contract Logistics Oy</h3><p>Logistics for international trade fairs and events: project coordination, sales and on-site supervision at exhibitions.</p></li>
+        <li><span class="yr">2024 – 2025</span><h3>Project Logistics Specialist, Konecranes (via Academic Work)</h3><p>Requests for quotation and freight purchasing for port crane projects. SAP and nShift in daily use.</p></li>
+        <li><span class="yr">2023 – 2024</span><h3>Freight Purchaser, Andritz Oy</h3><p>Tendering and negotiation of freight and warehousing agreements for pulp and paper delivery projects.</p></li>
+        <li><span class="yr">2017 – 2023</span><h3>Logistics and Quality Manager, TM System Finland</h3><p>Supply chain, purchasing, warehouse and transport, plus the ISO 9001 system and audits.</p></li>
+        <li><span class="yr">2016</span><h3>Logistics Manager, TM System Finland</h3><p>Global delivery projects, purchasing support for project managers, after-sales spare parts.</p></li>
+        <li><span class="yr">2014 – 2015</span><h3>Logistics Coordinator, TM System Finland</h3><p>Supply chain network and advice on import and export.</p></li>
+      </ol>
+    </div>
+    <div>
+      <h2>Education</h2>
+      <ul class="edu">
+        <li>Master's studies, Operations and Supply Chain Management<span>Turku School of Economics, started 2025, minor in accounting</span></li>
+        <li>Master's degree, project management<span>Turku University of Applied Sciences, 2018–2021, IPMA Level D</span></li>
+        <li>Bachelor's degree, business and logistics<span>Turku University of Applied Sciences, 2009–2013</span></li>
+        <li>PMAF Project Management Foundation Certificate<span>certificate</span></li>
+      </ul>
+      <h2 style="margin-top:34px">Languages</h2>
+      <ul class="edu">
+        <li>Finnish<span>native</span></li>
+        <li>English<span>fluent</span></li>
+        <li>Swedish<span>basic</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div><h2>Contact</h2><p>The full CV comes with my application. Email is the quickest way to reach me.</p></div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+      <a class="mail" href="mailto:juusojyvakorpi@gmail.com">juusojyvakorpi@gmail.com</a>
+      <button class="btn" id="copy" type="button">Copy email</button>
+      <a class="btn" style="text-decoration:none;display:inline-flex;align-items:center" href="https://www.linkedin.com/in/juusojyv%C3%A4korpi">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">Juuso Jyväkorpi · Helsinki, Finland</div></footer>
+<script>
+{
+  const b=document.getElementById('copy');
+  b.addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText('juusojyvakorpi@gmail.com');b.textContent='Copied';}
+    catch(e){b.textContent='Select the address to copy';}
+    setTimeout(()=>{b.textContent='Copy email'},2500);
+  });
+}
+</script>
+</body>
+</html>
